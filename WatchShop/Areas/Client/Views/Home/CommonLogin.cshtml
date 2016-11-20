@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập</title>
+    <link href="~/Assets/Client/css/signin.css" rel="stylesheet" />
+    <script src="~/Assets/Client/js/bootstrap.js"></script>
+    <script src="~/Assets/Client/js/modernizr-2.6.2.js"></script>
+    <link href="~/Assets/Client/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Assets/Common/Js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div class="logo">
+        <h1><a href="@Url.Action("Index","Home","Client")"><span class="m_1">W</span>atches</a></h1>
+    </div>
+
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form">
+                <p class="error"></p>
+                <input type="text" placeholder="tên tài khoản" id="create-username" />
+                <input type="password" placeholder="mật khẩu" id="create-password" />
+                <input type="text" placeholder="email" id="create-email" />
+                <input type="button" id="button-create" class="button" value="Tạo tài khoản" />
+                <p class="message">Đã có tài khoản? <a href="#">Đăng nhập</a></p>
+            </form>
+
+            <form class="login-form">
+                <p class="error"></p>
+                <input type="text" placeholder="tên tài khoản" id="login-username" />
+                <input type="password" placeholder="mật khẩu" id="login-password" />
+                <input type="button" id="button-login" class="button" value="Đăng nhập" />
+                <p class="message">Chưa có tài khoản? <a href="#">Tạo tài khoản mới</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.message a').click(function () {
+                $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+            });
+
+            $('#button-create').click(function(){
+                var username=$('#create-username').val();
+                var password=$('#create-password').val();
+                var email=$('#create-email').val();
+                if (username == "") {
+                    $('.error').text("Bạn chưa nhập tên tài khoản!").css("color", "red");
+                    $('#create-username').focus();
+                } else if (password == "") {
+                    $('.error').text("Bạn chưa nhập mật khẩu!").css("color", "red");
+                    $('#create-password').focus();
+                } else if(email==""){
+                    $('.error').text("Bạn chưa nhập email!").css("color", "red");
+                    $('#create-email').focus();
+                }
+            });
+
+            $('#button-login').click(function () {
+                var username = $('#login-username').val();
+                var password = $('#login-password').val();
+                if (username == "") {
+                    $('.error').text("Bạn chưa nhập tên tài khoản!").css("color", "red");
+                    $('#login-username').focus();
+                } else if (password == "") {
+                    $('.error').text("Bạn chưa nhập mật khẩu!").css("color", "red");
+                    $('#login-password').focus();
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Client/Home/IsValidUser",
+                        data: {
+                            username: username,
+                            password: password
+                        },
+                        dataType:"json",
+                        success: function (response) {
+                            if (response.Error == "success") {
+                                window.location.href = response.Message;
+                            } else {
+                                $('.error').text("" + response.Message).css("color", "red");
+                            }
+                        }
+                    });
+                }
+            });
+
+            var type=@ViewBag.Type;
+            if(type=="1"){
+                $('.register-form').hide();
+                $('.login-form').show();
+            }else{
+                $('.register-form').show();
+                $('.login-form').hide();
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+﻿@using PagedList;
+@using Models.EF;
+@using WatchShop.Common;
+@model IPagedList<Models.EF.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_ClientLayout.cshtml";
+    List<Branch> branches = (List<Branch>)ViewData["branches"];
+}
+
+@section Header{
+    <script src="~/Assets/Client/js/filter.js"></script>
+}
+
+<!--start-breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li class="active">Sản phẩm</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--prdt-starts-->
+<div class="prdt">
+    <div class="container">
+        <div class="prdt-top">
+            <div class="col-md-9 prdt-left">
+                @{
+                    int numberOfRows = Model.Count / 4;
+                    if (numberOfRows == 0)
+                    {
+                        numberOfRows = 1;
+                    }
+                    for (int i = 0; i < numberOfRows; i++)
+                    {
+                        <div class="product-one">
+                            @{
+                        int j = Model.Count - 4 * (numberOfRows - i);
+                        if (j < 0)
+                        {
+                            j = 0;
+                        }
+                        int limit = 4 * (i + 1);
+                        if (limit > Model.Count)
+                        {
+                            limit = Model.Count;
+                        }
+                        for (; j < limit; j++)
+                        {
+                            Product product = Model[j];
+                            string imagePath = WatchShop.Common.Constants.IMAGE_PATH + product.Image;
+                            <div class="col-md-4 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="@Url.Action("Detail", "Product", "Customer")" class="mask"><img class="img-responsive zoom-img" src="@imagePath" style="height:250px" /></a>
+                                    <div class="product-bottom">
+                                        <h3>@product.Name</h3>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@product.Price VNĐ</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-@product.Discount%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                            }
+                        </div>
+                    }
+                }
+            </div>
+            <div class="col-md-3 prdt-right">
+                <div class="w_sidebar">
+
+                    <section class="sky-form">
+                        <h4>Giá bán</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="radio"><input type="radio" name="price" class="price-radio" id="price0" value="price0"><i></i>Tất cả</label>
+                                <label class="radio"><input type="radio" name="price" class="price-radio" id="price1" value="price1"><i></i>Từ 0 VNĐ đến 1.000.000 VNĐ</label>
+                                <label class="radio"><input type="radio" name="price" class="price-radio" id="price2" value="price2"><i></i>Từ 1.000.000 VNĐ đến 3.000.000 VNĐ</label>
+                                <label class="radio"><input type="radio" name="price" class="price-radio" id="price3" value="price3"><i></i>Từ 3.000.000 VNĐ đến 5.000.000 VNĐ</label>
+                                <label class="radio"><input type="radio" name="price" class="price-radio" id="price4" value="price4"><i></i>Từ 5.000.000 VNĐ trở lên</label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="sky-form">
+                        <h4>Thương hiệu</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="checkbox" id="checkbox-all" class="branch-checkbox" value="all" /><i></i>Tất cả</label>
+                                @{
+                                    for (int i = 0; i < branches.Count; i++)
+                                    {
+                                        <label class="checkbox"><input type="checkbox" name="checkbox" value="@branches[i].Id" class="branch-checkbox" id="@branches[i].Id"><i></i>@branches[i].Name</label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="sky-form">
+                        <h4>Giảm giá</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="radio"><input type="radio" name="discount" class="discount-radio" id="discount0" value="discount0"><i></i>Từ 0%</label>
+                                <label class="radio"><input type="radio" name="discount" class="discount-radio" id="discount1" value="discount1"><i></i>Từ 10%</label>
+                                <label class="radio"><input type="radio" name="discount" class="discount-radio" id="discount2" value="discount2"><i></i>Từ 20%</label>
+                                <label class="radio"><input type="radio" name="discount" class="discount-radio" id="discount3" value="discount3"><i></i>Từ 30%</label>
+                                <label class="radio"><input type="radio" name="discount" class="discount-radio" id="discount4" value="discount4"><i></i>Từ 40%</label>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--product-end-->

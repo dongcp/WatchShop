@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F83DFC8C-8ACC-42C5-BEF6-CEC1678EAC3E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WatchShop</RootNamespace>
+    <AssemblyName>WatchShop</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Admin\data\flot-data.js" />
+    <Content Include="Assets\Admin\data\morris-data.js" />
+    <Content Include="Assets\Admin\dist\css\sb-admin-2.css" />
+    <Content Include="Assets\Admin\dist\css\sb-admin-2.min.css" />
+    <Content Include="Assets\Admin\dist\js\sb-admin-2.js" />
+    <Content Include="Assets\Admin\dist\js\sb-admin-2.min.js" />
+    <Content Include="Assets\Admin\js\sb-admin-2.js" />
+    <Content Include="Assets\Admin\vendor\bootstrap-social\bootstrap-social.css" />
+    <Content Include="Assets\Admin\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Assets\Admin\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Assets\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Admin\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Assets\Admin\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables-plugins\dataTables.bootstrap.css" />
+    <Content Include="Assets\Admin\vendor\datatables-plugins\dataTables.bootstrap.js" />
+    <Content Include="Assets\Admin\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables-plugins\index.html" />
+    <Content Include="Assets\Admin\vendor\datatables-responsive\dataTables.responsive.css" />
+    <Content Include="Assets\Admin\vendor\datatables-responsive\dataTables.responsive.js" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.bootstrap.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.foundation.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.foundation.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.jqueryui.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.material.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.material.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.semanticui.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.semanticui.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.uikit.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\dataTables.uikit.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\jquery.dataTables.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Assets\Admin\vendor\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Assets\Admin\vendor\datatables\images\favicon.ico" />
+    <Content Include="Assets\Admin\vendor\datatables\images\sort_asc.png" />
+    <Content Include="Assets\Admin\vendor\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Assets\Admin\vendor\datatables\images\sort_both.png" />
+    <Content Include="Assets\Admin\vendor\datatables\images\sort_desc.png" />
+    <Content Include="Assets\Admin\vendor\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.bootstrap.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.bootstrap4.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.foundation.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.foundation.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.jqueryui.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.jqueryui.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.material.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.material.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.semanticui.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.semanticui.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.uikit.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\dataTables.uikit.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\jquery.dataTables.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Assets\Admin\vendor\datatables\js\jquery.js" />
+    <Content Include="Assets\Admin\vendor\flot-tooltip\jquery.flot.tooltip.js" />
+    <Content Include="Assets\Admin\vendor\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <Content Include="Assets\Admin\vendor\flot-tooltip\jquery.flot.tooltip.source.js" />
+    <Content Include="Assets\Admin\vendor\flot\excanvas.js" />
+    <Content Include="Assets\Admin\vendor\flot\excanvas.min.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.colorhelpers.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.canvas.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.categories.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.crosshair.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.errorbars.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.image.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.navigate.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.pie.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.resize.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.selection.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.stack.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.symbol.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.threshold.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.flot.time.js" />
+    <Content Include="Assets\Admin\vendor\flot\jquery.js" />
+    <Content Include="Assets\Admin\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Assets\Admin\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Assets\Admin\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Admin\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Assets\Admin\vendor\jquery\jquery.js" />
+    <Content Include="Assets\Admin\vendor\jquery\jquery.min.js" />
+    <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.css" />
+    <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.js" />
+    <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.min.css" />
+    <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.min.js" />
+    <Content Include="Assets\Admin\vendor\morrisjs\morris.css" />
+    <Content Include="Assets\Admin\vendor\morrisjs\morris.js" />
+    <Content Include="Assets\Admin\vendor\morrisjs\morris.min.js" />
+    <Content Include="Assets\Admin\vendor\raphael\raphael.js" />
+    <Content Include="Assets\Admin\vendor\raphael\raphael.min.js" />
+    <Content Include="Assets\Client\css\bootstrap.css" />
+    <Content Include="Assets\Client\css\flexslider.css" />
+    <Content Include="Assets\Client\css\memenu.css" />
+    <Content Include="Assets\Client\css\signin.css" />
+    <Content Include="Assets\Client\css\style.css" />
+    <Content Include="Assets\Client\images\11.png" />
+    <Content Include="Assets\Client\images\abt-1.jpg" />
+    <Content Include="Assets\Client\images\abt-2.jpg" />
+    <Content Include="Assets\Client\images\abt-3.jpg" />
+    <Content Include="Assets\Client\images\arrow.png" />
+    <Content Include="Assets\Client\images\bnr-1.jpg" />
+    <Content Include="Assets\Client\images\bnr-2.jpg" />
+    <Content Include="Assets\Client\images\bnr-3.jpg" />
+    <Content Include="Assets\Client\images\c-1.jpg" />
+    <Content Include="Assets\Client\images\c-2.jpg" />
+    <Content Include="Assets\Client\images\c-3.jpg" />
+    <Content Include="Assets\Client\images\cart-1.png" />
+    <Content Include="Assets\Client\images\cart-2.png" />
+    <Content Include="Assets\Client\images\cart-3.png" />
+    <Content Include="Assets\Client\images\close.png" />
+    <Content Include="Assets\Client\images\crossword.png" />
+    <Content Include="Assets\Client\images\p-1.png" />
+    <Content Include="Assets\Client\images\p-2.png" />
+    <Content Include="Assets\Client\images\p-3.png" />
+    <Content Include="Assets\Client\images\p-4.png" />
+    <Content Include="Assets\Client\images\p-5.png" />
+    <Content Include="Assets\Client\images\p-6.png" />
+    <Content Include="Assets\Client\images\p-7.png" />
+    <Content Include="Assets\Client\images\p-8.png" />
+    <Content Include="Assets\Client\images\pr-1.jpg" />
+    <Content Include="Assets\Client\images\pr-2.jpg" />
+    <Content Include="Assets\Client\images\s-1.jpg" />
+    <Content Include="Assets\Client\images\s-2.jpg" />
+    <Content Include="Assets\Client\images\s-3.jpg" />
+    <Content Include="Assets\Client\images\s-icons.png" />
+    <Content Include="Assets\Client\images\search.png" />
+    <Content Include="Assets\Client\images\star.png" />
+    <Content Include="Assets\Client\images\tick.png" />
+    <Content Include="Assets\Client\js\filter.js" />
+    <Content Include="Assets\Client\js\imagezoom.js" />
+    <Content Include="Assets\Client\js\jquery-1.11.0.min.js" />
+    <Content Include="Assets\Client\js\jquery.easydropdown.js" />
+    <Content Include="Assets\Client\js\jquery.flexslider.js" />
+    <Content Include="Assets\Client\js\memenu.js" />
+    <Content Include="Assets\Client\js\responsiveslides.min.js" />
+    <Content Include="Assets\Client\js\simpleCart.min.js" />
+    <Content Include="Assets\Common\Images\cellini_date_m505.jpg" />
+    <Content Include="Assets\Common\Images\L1.645.4.52.4.png" />
+    <Content Include="Assets\Common\Images\watch_background.jpg" />
+    <Content Include="Assets\Common\Js\jquery-3.1.1.js" />
+    <Content Include="Assets\Common\Js\jquery-3.1.1.min.js" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BranchesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Client\Models\LoginJson.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Client\Views\web.config" />
+    <Content Include="Areas\Client\Views\Shared\_ClientLayout.cshtml" />
+    <Content Include="Assets\Client\fonts\BreeSerif-Regular.ttf" />
+    <Content Include="Assets\Client\fonts\Lato-Regular.ttf" />
+    <Content Include="Assets\Client\fonts\Lora-Regular.ttf" />
+    <Content Include="Assets\Client\fonts\Muli-Regular.ttf" />
+    <Content Include="Assets\Client\fonts\Philosopher-Regular.ttf" />
+    <Content Include="Assets\Admin\less\mixins.less" />
+    <Content Include="Assets\Admin\less\sb-admin-2.less" />
+    <Content Include="Assets\Admin\less\variables.less" />
+    <Content Include="Assets\Admin\vendor\bootstrap-social\bootstrap-social.less" />
+    <Content Include="Assets\Admin\vendor\bootstrap-social\bootstrap-social.scss" />
+    <Content Include="Assets\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\Admin\vendor\datatables-responsive\dataTables.responsive.scss" />
+    <Content Include="Assets\Admin\vendor\datatables\images\Sorting icons.psd" />
+    <Content Include="Assets\Admin\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Assets\Admin\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Admin\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Admin\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Admin\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Admin\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\animated.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\core.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\extras.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\icons.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\larger.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\list.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\path.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\spinning.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\less\variables.less" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_extras.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_spinning.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Assets\Admin\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Client\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Home\CommonLogin.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Products\NoProduct.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{7a47d30c-e99a-45df-8003-45a8573a323c}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WatchShopService\WatchShopService.csproj">
+      <Project>{c4018919-138e-49f4-933a-6236b9e1978c}</Project>
+      <Name>WatchShopService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2545</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1037/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

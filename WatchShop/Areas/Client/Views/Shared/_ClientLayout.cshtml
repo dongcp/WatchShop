@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - Yue</title>
+    <link href="~/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+    <script src="~/Assets/Common/Js/jquery-3.1.1.js"></script>
+    <!--Custom-Theme-files-->
+    <!--theme-style-->
+    <link href="~/Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--start-menu-->
+    <script src="~/Assets/Client/js/simpleCart.min.js"></script>
+    <link href="~/Assets/Client/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Assets/Client/js/memenu.js" type="text/javascript"></script>
+    <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+    <!--dropdown-->
+    <script src="~/Assets/Client/js/jquery.easydropdown.js"></script>
+    <link href="~/Assets/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @RenderSection("Header", required: false)
+</head>
+
+<body>
+    <!--top-header-->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-main">
+                <div class="col-md-6 top-header-left">
+                    <div class="drop">
+                        <div class="box1">
+                            <a href="@Url.Action("SignUp", "Home", "Client")">
+                                <i class="fa fa-user-plus top-header-icon" aria-hidden="true"></i>
+                                Đăng ký
+                            </a>
+                        </div>
+                        <div class="box1">
+                            <a href="@Url.Action("SignIn", "Home", "Client")">
+                                <i class="fa fa-user top-header-icon" aria-hidden="true"></i>
+                                Đăng nhập
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 top-header-left">
+                    <div class="cart box_1">
+                        <a href="checkout.html">
+                            <div class="total">
+                                <span class="simpleCart_total"></span>
+                            </div>
+                            <img src="~/Assets/Client/images/cart-1.png" alt="" />
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--top-header-->
+    <!--start-logo-->
+    <div class="logo">
+        <a href="@Url.Action("Index", "Home", "Client")"><h1>Luxury Watches</h1></a>
+    </div>
+    <!--start-logo-->
+    <!--bottom-header-->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="header">
+                <div class="col-md-9 header-left">
+                    <div class="top-nav">
+                        <ul class="memenu skyblue">
+                            <li class="active"><a href="@Url.Action("Index", "Product", "Client")">Home</a></li>
+                            <li class="grid">
+                                <a href="#">Đồng hồ nam</a>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Đồng hồ nữ</a>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Thương hiệu</a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <ul>
+                                                <li><a href="products.html">Ogival</a></li>
+                                                <li><a href="products.html">Omega</a></li>
+                                                <li><a href="products.html">Tissot</a></li>
+                                                <li><a href="products.html">Longines</a></li>
+                                                <li><a href="products.html">Rolex</a></li>
+                                                <li><a href="products.html">Seiko</a></li>
+                                                <li><a href="products.html">Shinola</a></li>
+                                                <li><a href="products.html">Triwa</a></li>
+                                                <li><a href="products.html">Skagen</a></li>
+                                                <li><a href="products.html">Junghans</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-3 header-right">
+                    <div class="search-bar">
+                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                        <input type="submit" value="">
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--bottom-header-->
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <!--footer-starts-->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-6 footer-left">
+                    <form>
+                        <input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="col-md-6 footer-right">
+                    <p>© 2015 Luxury Watches. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--footer-end-->
+</body>
+</html>

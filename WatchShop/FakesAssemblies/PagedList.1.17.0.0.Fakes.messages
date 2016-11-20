@@ -1,0 +1,7 @@
+F:\git\WatchShop\WatchShop\Fakes\PagedList.fakes : warning : Cannot generate stub for PagedList.PagedListExtensions: type is sealed.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.fakes : warning : Cannot generate stub for <>f__AnonymousType0`2: type is sealed.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.fakes : warning : Cannot generate shim for PagedList.IPagedList: type is an interface.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.fakes : warning : Cannot generate shim for PagedList.IPagedList`1: type is an interface.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.fakes : warning : Cannot generate shim for PagedList.PagedListExtensions+<>c__DisplayClass4`1: type is not supported because of internal limitations.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.fakes : warning : Cannot generate shim for PagedList.PagedListExtensions+<Partition>d__6`1: type is not supported because of internal limitations.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.fakes : warning : Cannot generate shim for <>f__AnonymousType0`2: type is not supported because of internal limitations.

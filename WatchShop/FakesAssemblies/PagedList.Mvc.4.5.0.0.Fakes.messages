@@ -1,0 +1,5 @@
+F:\git\WatchShop\WatchShop\Fakes\PagedList.Mvc.fakes : warning : Cannot generate stub for PagedList.Mvc.HtmlHelper: type is sealed.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.Mvc.fakes : warning : Cannot generate stub for PagedList.Mvc.PagedListDisplayMode: type is a value type.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.Mvc.fakes : warning : Cannot generate shim for PagedList.Mvc.HtmlHelper+<>c__DisplayClass3: type is not supported because of internal limitations.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.Mvc.fakes : warning : Cannot generate shim for PagedList.Mvc.PagedListDisplayMode: type is an enum.
+F:\git\WatchShop\WatchShop\Fakes\PagedList.Mvc.fakes : warning : Cannot generate shim for PagedList.Mvc.PagedListRenderOptions+<>c__DisplayClass1: type is not supported because of internal limitations.
