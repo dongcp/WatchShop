@@ -1,0 +1,28 @@
+﻿<div class="modal fade" id="confirmation-dialog" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa?</p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmation-dialog-button-ok" value="@ViewData["link"]">Xóa</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var itemToDelete = "";
+
+    $(document).ready(function () {
+        $('.delete-item').on('click', function () {
+            itemToDelete = $(this).attr('data-id');
+        });
+
+        $('#confirmation-dialog-button-ok').on('click', function () {
+            var link = $(this).val();
+            window.location.href = link + itemToDelete;
+        });
+    });
+</script>

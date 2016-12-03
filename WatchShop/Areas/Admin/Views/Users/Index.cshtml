@@ -1,0 +1,80 @@
+﻿@model PagedList.IPagedList<Models.EF.User>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader{
+    Danh sách người dùng
+}
+
+<div class="col-lg-15">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <a href="@Url.Action("Create","Users","Index")"><i class="fa fa-plus" aria-hidden="true"></i> Thêm người dùng</a>
+        </div>
+        <div class="panel-body">
+            <div class="bs-example widget-shadow">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Birthday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().UserGroupId)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="odd gradeA">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Birthday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserGroupId)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sửa", "Edit", new { username = item.Username }) |
+                                @Html.ActionLink("Chi tiết", "Details", new { username = item.Username }) |
+                                <a href="#" class="delete-item" data-target="#confirmation-dialog" data-toggle="modal" data-id="@item.Username">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div style="text-align:center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("DeleteConfirmDialog", new ViewDataDictionary { { "link", "/Admin/Users/Delete/" } })

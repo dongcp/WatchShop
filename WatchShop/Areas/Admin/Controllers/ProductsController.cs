@@ -15,9 +15,9 @@ namespace WatchShop.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {
-        public ActionResult Index(int page = 1, int pageSize = 2)
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            return View(ProductDAO.Instance.GetAllProducts());
+            return View(ProductDAO.Instance.GetAllProducts(page, pageSize));
         }
 
         // GET: Admin/Products/Details/5

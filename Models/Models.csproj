@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="DAO\BranchDAO.cs" />
     <Compile Include="DAO\CommonDAO.cs" />
+    <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
+    <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="DAO\UserGroupDAO.cs" />
     <Compile Include="EF\Branch.cs">
@@ -66,6 +68,9 @@
       <DependentUpon>WatchShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Order.cs">
+      <DependentUpon>WatchShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\OrderDetail.cs">
       <DependentUpon>WatchShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Product.cs">
@@ -101,6 +106,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WatchShopDbContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\Product.metadata.cs" />
+    <Compile Include="Metadata\User.metadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

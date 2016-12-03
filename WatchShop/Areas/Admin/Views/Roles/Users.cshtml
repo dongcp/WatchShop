@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Models.EF.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    string roleId = (string)ViewData["RoleId"];
+}
+
+@section PageHeader{
+    Danh sách người dùng
+}
+
+<div class="col-lg-15">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Danh sách người dùng
+        </div>
+        <div class="panel-body">
+            <div class="bs-example widget-shadow">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Birthday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserGroupId)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="odd gradeA">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Birthday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserGroupId)
+                            </td>
+                            <td>
+                                <a href="#" class="button-add" data-bind="@roleId" data-id="@item.Username"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.button-add').click(function () {
+            var roleId= $(this).attr("data-bind");
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Roles/GrantUserPermission",
+                data: {
+                    username: $(this).attr("data-id"),
+                    roleId: roleId
+                },
+                success: function (response) {
+                    window.location.href="/Admin/Roles/Users/?roleId="+roleId;
+                }
+            });
+        });
+    });
+</script>

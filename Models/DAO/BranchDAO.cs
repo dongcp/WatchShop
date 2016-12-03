@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PagedList;
 
 namespace Models.DAO
 {
@@ -55,6 +54,11 @@ namespace Models.DAO
         public List<Branch> GetAll()
         {
             return db.Branches.ToList();
+        }
+
+        public IEnumerable<Branch> GetAll(int page, int pageSize)
+        {
+            return db.Branches.OrderBy(br => br.Id).ToPagedList(page, pageSize);
         }
 
         public Branch GetById(string id)

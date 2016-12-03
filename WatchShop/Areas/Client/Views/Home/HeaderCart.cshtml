@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WatchShop.Areas.Client.Models.CartItem>
+
+<div class="cart box_1">
+    <a href="@Url.Action("Index","Cart","Client")">
+        <div class="total">
+            <span class="cart-total-cost">@Model.Count() sản phẩm </span>
+        </div>
+        <img src="~/Assets/Client/images/cart-1.png" />
+    </a>
+    <p><a href="#" class="simpleCart_empty">Empty Cart</a></p>
+    <div class="clearfix"> </div>
+</div>

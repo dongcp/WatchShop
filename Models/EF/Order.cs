@@ -14,10 +14,11 @@ namespace Models.EF
     
     public partial class Order
     {
-        public string TransactionId { get; set; }
-        public string ProductId { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<double> Price { get; set; }
-        public Nullable<byte> Status { get; set; }
+        public string Id { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<double> TotalCost { get; set; }
+        public Nullable<int> Status { get; set; }
+        public string CustomerId { get; set; }
+        public string CustomerName { get; set; }
     }
 }

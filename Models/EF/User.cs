@@ -11,7 +11,7 @@ namespace Models.EF
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class User
     {
         public string Username { get; set; }
@@ -21,5 +21,14 @@ namespace Models.EF
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string UserGroupId { get; set; }
+
+        public void Copy(User user)
+        {
+            Name = user.Name;
+            Birthday = user.Birthday;
+            Address = user.Address;
+            PhoneNumber = user.PhoneNumber;
+            UserGroupId = user.UserGroupId;
+        }
     }
 }

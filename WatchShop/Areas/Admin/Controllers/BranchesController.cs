@@ -14,9 +14,9 @@ namespace WatchShop.Areas.Admin.Controllers
     public class BranchesController : Controller
     {
         // GET: Admin/Branches
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            return View(BranchDAO.Instance.GetAll());
+            return View(BranchDAO.Instance.GetAll(page, pageSize));
         }
 
         // GET: Admin/Branches/Details/5

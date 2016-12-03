@@ -43,13 +43,14 @@ namespace WatchShop.Areas.Client.Controllers
 
         public ActionResult SignOut()
         {
-            return View();
+            Session[Constants.SESSION_USER] = null;
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public JsonResult IsValidUser(string username, string password)
         {
-            User user = UserDAO.Instance.GetUserByUsername(username);
+            User user = UserDAO.Instance.GetByUsername(username);
             LoginJson json = new LoginJson();
             if (user == null)
             {
@@ -71,6 +72,14 @@ namespace WatchShop.Areas.Client.Controllers
                     json.Message = "/Admin/Home/Index";
             }
             return Json(json);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult HeaderCart()
+        {
+            List<CartItem> cart = (List<CartItem>)Session[Constants.SESSION_CART];
+            if (cart == null) cart = new List<CartItem>();
+            return PartialView(cart);
         }
     }
 }

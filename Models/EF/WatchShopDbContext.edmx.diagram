@@ -7,13 +7,14 @@
       <Diagram DiagramId="4217ab9a0d244d03ba3e780325c8a997" Name="Diagram1">
         <EntityTypeShape EntityType="WatchShopDbContext.Branch" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WatchShopDbContext.GroupPermission" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WatchShopDbContext.Order" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WatchShopDbContext.Product" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WatchShopDbContext.Role" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WatchShopDbContext.Transaction" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WatchShopDbContext.User" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WatchShopDbContext.UserGroup" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WatchShopDbContext.UserPermission" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchShopDbContext.OrderDetail" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="WatchShopDbContext.Order" Width="1.5" PointX="5.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
