@@ -5,22 +5,16 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+@section PageHeader{
+    Thông tin cá nhân
+}
+
 <div class="col-lg-15">
     <div class="panel panel-info">
-        <div class="panel-heading">
-            Thông tin người dùng
-        </div>
         <div class="panel-body">
             <div class="bs-example widget-shadow">
                 <div>
                     <dl class="dl-horizontal">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Password)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Password)
-                        </dd>
 
                         <dt>
                             @Html.DisplayNameFor(model => model.Name)

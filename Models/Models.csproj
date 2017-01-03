@@ -106,6 +106,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WatchShopDbContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\Order.metadata.cs" />
     <Compile Include="Metadata\Product.metadata.cs" />
     <Compile Include="Metadata\User.metadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

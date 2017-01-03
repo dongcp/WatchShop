@@ -74,12 +74,44 @@ namespace WatchShop.Areas.Client.Controllers
             return Json(json);
         }
 
+        [HttpPost]
+        public JsonResult CreateUser(string username, string password, string phoneNumber)
+        {
+            UserDAO.Instance.CreateUser(username, password, phoneNumber);
+            return Json(
+                new
+                {
+                    status = true
+                }
+            );
+        }
+
         [ChildActionOnly]
         public PartialViewResult HeaderCart()
         {
             List<CartItem> cart = (List<CartItem>)Session[Constants.SESSION_CART];
             if (cart == null) cart = new List<CartItem>();
             return PartialView(cart);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult Search()
+        {
+            return PartialView();
+        }
+
+        public JsonResult GetListProducts()
+        {
+            List<SearchJson> searches = new List<SearchJson>();
+            List<Product> products = ProductDAO.Instance.GetAllProducts();
+            foreach (Product product in products)
+            {
+                SearchJson search = new SearchJson();
+                search.Value = product.Name;
+                search.Data = product.Id;
+                searches.Add(search);
+            }
+            return Json(searches);
         }
     }
 }

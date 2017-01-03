@@ -10,7 +10,6 @@
 namespace Models.EF
 {
     using System;
-    using System.Collections.Generic;
     
     public partial class Product
     {
@@ -18,12 +17,13 @@ namespace Models.EF
         public string Name { get; set; }
         public Nullable<int> Type { get; set; }
         public string BranchId { get; set; }
-        public Nullable<double> Price { get; set; }
+        public double Price { get; set; }
         public Nullable<int> Discount { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
         public string Images { get; set; }
         public Nullable<int> View { get; set; }
         public string Username { get; set; }
+        public int Quantity { get; set; }
     }
 }

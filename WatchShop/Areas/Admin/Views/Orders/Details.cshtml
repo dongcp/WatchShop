@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Models.EF.OrderDetail>
+@using Models.DAO
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader{
+    Danh sách sản phẩm
+}
+
+<div class="col-lg-15">
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="bs-example widget-shadow">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Tên sản phẩm
+                        </th>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th>
+                            Số lượng
+                        </th>
+                        <th>
+                            Giá bán
+                        </th>
+                        <th>
+                            Thành tiền
+                        </th>
+                    </tr>
+                    @{
+                        var count = 0;
+                        double totalCost = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        totalCost += item.Price * item.Quantity;
+                        var product = ProductDAO.Instance.GetProductById(item.ProductId);
+                        <tr class="odd gradeA">
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @product.Name
+                            </td>
+                            <td>
+                                <img src="@(WatchShop.Common.Constants.IMAGE_PATH + product.Image)" width="100" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @(item.Price * item.Quantity) VNĐ
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            Tổng tiền:
+                        </td>
+                        <td>@totalCost VNĐ</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿<div class="modal fade" id="warning-dialog" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>@ViewData["message"]</p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="warning-dialog-button-ok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#warning-dialog-button-ok').on('click', function () {
+            $('#warning-dialog').modal('hide');
+        });
+    });
+</script>

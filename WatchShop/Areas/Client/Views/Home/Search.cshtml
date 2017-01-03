@@ -1,0 +1,14 @@
+﻿
+
+<input id="text-search" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+
+<script>
+    $(document).ready(function () {
+        $('#text-search').autocomplete({
+            serviceUrl: '/Client/Home/GetListProducts',
+            onSelect: function (suggestion) {
+                alert(suggestion.value + " " + suggestion.data);
+            }
+        });
+    });
+</script>

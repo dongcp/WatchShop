@@ -30,13 +30,15 @@
           <Property Name="Status" Type="int" />
           <Property Name="CustomerId" Type="varchar" MaxLength="10" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="300" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
-            <PropertyRef Name="TransactionId" />
+            <PropertyRef Name="OrderId" />
             <PropertyRef Name="ProductId" />
           </Key>
-          <Property Name="TransactionId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OrderId" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProductId" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Price" Type="float" />
@@ -57,6 +59,7 @@
           <Property Name="Images" Type="text" />
           <Property Name="View" Type="int" />
           <Property Name="Username" Type="varchar" MaxLength="100" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -153,6 +156,7 @@
           <Property Name="Images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="View" Type="Int32" />
           <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -217,14 +221,14 @@
         </EntityContainer>
         <EntityType Name="OrderDetail">
           <Key>
-            <PropertyRef Name="TransactionId" />
             <PropertyRef Name="ProductId" />
+            <PropertyRef Name="OrderId" />
           </Key>
-          <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Price" Type="Double" />
           <Property Name="Status" Type="Byte" />
+          <Property Name="OrderId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -236,6 +240,8 @@
           <Property Name="Status" Type="Int32" />
           <Property Name="CustomerId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="CustomerName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -262,6 +268,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="WatchShopDbContext.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -332,17 +339,19 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="WatchShopDbContext.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="WatchShopDbContext.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />

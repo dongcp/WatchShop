@@ -1,15 +1,15 @@
-﻿
-@{
-    ViewBag.Title = "EmptyCart";
+﻿@{
     Layout = "~/Areas/Client/Views/Shared/_ClientLayout.cshtml";
-}
-
-@section Header{
-    <link href="~/Assets/Admin/dist/css/sb-admin-2.css" rel="stylesheet" />
-    <script src="~/Assets/Admin/dist/js/sb-admin-2.js"></script>
 }
 
 <h2>Giỏ hàng rỗng</h2>
 
-<button type="button" class="btn btn-outline btn-primary">Tiếp tục mua hàng</button>
+<button type="button" class="btn btn-outline btn-primary" id="button-continue-shopping">Tiếp tục mua hàng</button>
 
+<script>
+    $(document).ready(function () {
+        $('#button-continue-shopping').on('click', function () {
+            window.location.href = "/Client/Products/Index";
+        });
+    });
+</script>

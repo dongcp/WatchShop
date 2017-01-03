@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace Models.EF
 {
@@ -15,6 +13,8 @@ namespace Models.EF
             public string Name { get; set; }
             [Display(Name = "Loại sản phẩm")]
             public Nullable<int> Type { get; set; }
+            [Display(Name = "Số lượng tồn kho")]
+            public int Quantity { get; set; }
             [Display(Name = "Thương hiệu")]
             public string BranchId { get; set; }
             [Display(Name = "Giá bán")]

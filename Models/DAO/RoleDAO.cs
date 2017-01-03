@@ -176,5 +176,25 @@ namespace Models.DAO
 
             return groupPermissions.Union(userPermissions).OrderBy(r => r.Id).ToPagedList(page, pageSize);
         }
+
+        public void DeleteGroupPermission(string roleId, string groupId)
+        {
+            GroupPermission groupPermission = db.GroupPermissions
+                .Where(gp => gp.RoleId.Equals(roleId))
+                .Where(gp => gp.UserGroupId.Equals(groupId))
+                .First();
+            db.GroupPermissions.Remove(groupPermission);
+            db.SaveChanges();
+        }
+
+        public void DeletePersonPermission(string roleId, string username)
+        {
+            UserPermission personPermission = db.UserPermissions
+                .Where(gp => gp.RoleId.Equals(roleId))
+                .Where(gp => gp.Username.Equals(username))
+                .First();
+            db.UserPermissions.Remove(personPermission);
+            db.SaveChanges();
+        }
     }
 }

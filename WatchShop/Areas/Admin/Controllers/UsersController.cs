@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Models.EF;
 using Models.DAO;
 using WatchShop.Common;
+using WatchShop.Areas.Admin.Models;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
+    [Authority]
     public class UsersController : Controller
     {
         private WatchShopEntities db = new WatchShopEntities();

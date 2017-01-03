@@ -9,6 +9,10 @@ namespace Models.DAO
 {
     public class ProductDAO
     {
+        public const int FILTER_TYPE_ALL = -1;
+        public const int FILTER_TYPE_MEN = 1;
+        public const int FILTER_TYPE_WOMEN = 2;
+
         private const string ID_PREFIX_PRODUCT = "PRO";
 
         private WatchShopEntities db;
@@ -76,7 +80,7 @@ namespace Models.DAO
         }
 
         public IEnumerable<Product> GetAllByFilter(
-            string branchFilter, string priceFilter, string discountFilter, int page, int pageSize)
+            string branchFilter, string priceFilter, string discountFilter, int typeFilter, int page, int pageSize)
         {
             if (string.IsNullOrEmpty(branchFilter))
             {
@@ -135,17 +139,32 @@ namespace Models.DAO
                 {
                     if (string.IsNullOrEmpty(branchId))
                     {
-                        tmp = db.Products
+                        if (typeFilter == FILTER_TYPE_ALL)
+                            tmp = db.Products
+                                .Where(p => p.Price >= minPrice)
+                                .Where(p => p.Discount >= discount)
+                                .ToList();
+                        else
+                            tmp = db.Products
                             .Where(p => p.Price >= minPrice)
                             .Where(p => p.Discount >= discount)
+                            .Where(p => p.Type == typeFilter)
                             .ToList();
                     }
                     else
                     {
-                        tmp = db.Products
+                        if (typeFilter == FILTER_TYPE_ALL)
+                            tmp = db.Products
                             .Where(p => p.BranchId.Equals(branchId))
                             .Where(p => p.Price >= minPrice)
                             .Where(p => p.Discount >= discount)
+                            .ToList();
+                        else
+                            tmp = db.Products
+                            .Where(p => p.BranchId.Equals(branchId))
+                            .Where(p => p.Price >= minPrice)
+                            .Where(p => p.Discount >= discount)
+                            .Where(p => p.Type == typeFilter)
                             .ToList();
                     }
                 }
@@ -153,18 +172,33 @@ namespace Models.DAO
                 {
                     if (string.IsNullOrEmpty(branchId))
                     {
-                        tmp = db.Products
+                        if (typeFilter == FILTER_TYPE_ALL)
+                            tmp = db.Products
+                                .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
+                                .Where(p => p.Discount >= discount)
+                                .ToList();
+                        else
+                            tmp = db.Products
                             .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
                             .Where(p => p.Discount >= discount)
+                            .Where(p => p.Type == typeFilter)
                             .ToList();
                     }
                     else
                     {
-                        tmp = db.Products
-                            .Where(p => p.BranchId.Equals(branchId))
-                            .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
-                            .Where(p => p.Discount >= discount)
-                            .ToList();
+                        if (typeFilter == FILTER_TYPE_ALL)
+                            tmp = db.Products
+                                .Where(p => p.BranchId.Equals(branchId))
+                                .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
+                                .Where(p => p.Discount >= discount)
+                                .ToList();
+                        else
+                            tmp = db.Products
+                           .Where(p => p.BranchId.Equals(branchId))
+                           .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
+                           .Where(p => p.Discount >= discount)
+                            .Where(p => p.Type == typeFilter)
+                           .ToList();
                     }
                 }
                 products.AddRange(tmp);

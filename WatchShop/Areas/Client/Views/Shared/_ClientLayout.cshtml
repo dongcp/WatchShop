@@ -2,9 +2,10 @@
 <html>
 <head>
     <title>@ViewBag.Title - Yue</title>
-    <link href="~/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="~/Assets/Common/Js/jquery-3.1.1.js"></script>
+    <link href="~/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Assets/Common/Js/jquery-3.1.1.min.js"></script>
+    <script src="~/Assets/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
     <link href="~/Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -22,6 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--dropdown-->
     <script src="~/Assets/Client/js/jquery.easydropdown.js"></script>
     <link href="~/Assets/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @*<script src="~/Assets/Client/js/jquery-ui.min.js"></script>*@
     @RenderSection("Header", required: false)
 </head>
 
@@ -33,7 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-6 top-header-left">
                     <div class="drop">
                         <div class="box1">
-                            <a href="@Url.Action("SignUp", "Home", "Client")">
+                            <a href="@Url.Action("SignUp", "Home", new { area="Client"})">
                                 <i class="fa fa-user-plus top-header-icon" aria-hidden="true"></i>
                                 Đăng ký
                             </a>
@@ -57,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--top-header-->
     <!--start-logo-->
     <div class="logo">
-        <a href="@Url.Action("Index", "Home", "Client")"><h1>Luxury Watches</h1></a>
+        <a href="@Url.Action("Index", "Home", new { area="Client"})"><h1>Luxury Watches</h1></a>
     </div>
     <!--start-logo-->
     <!--bottom-header-->
@@ -67,36 +69,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-9 header-left">
                     <div class="top-nav">
                         <ul class="memenu skyblue">
-                            <li class="active"><a href="@Url.Action("Index", "Products", "Client")">Home</a></li>
+                            <li class="active"><a href="@Url.Action("TypeFilter","Products",new { area="Client", typeFilter=-1})">Home</a></li>
                             <li class="grid">
-                                <a href="#">Đồng hồ nam</a>
+                                <a href="@Url.Action("TypeFilter","Products",new { area="Client", typeFilter=1})">Đồng hồ nam</a>
                             </li>
                             <li class="grid">
-                                <a href="#">Đồng hồ nữ</a>
-                            </li>
-                            <li class="grid">
-                                <a href="#">Thương hiệu</a>
-                                <div class="mepanel">
-                                    <div class="row">
-                                        <div class="col1 me-one">
-                                            <ul>
-                                                <li><a href="products.html">Ogival</a></li>
-                                                <li><a href="products.html">Omega</a></li>
-                                                <li><a href="products.html">Tissot</a></li>
-                                                <li><a href="products.html">Longines</a></li>
-                                                <li><a href="products.html">Rolex</a></li>
-                                                <li><a href="products.html">Seiko</a></li>
-                                                <li><a href="products.html">Shinola</a></li>
-                                                <li><a href="products.html">Triwa</a></li>
-                                                <li><a href="products.html">Skagen</a></li>
-                                                <li><a href="products.html">Junghans</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="grid">
-                                <a href="contact.html">Contact</a>
+                                <a href="@Url.Action("TypeFilter","Products",new { area="Client", typeFilter=2})">Đồng hồ nữ</a>
                             </li>
                         </ul>
                     </div>
@@ -104,8 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="col-md-3 header-right">
                     <div class="search-bar">
-                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                        <input type="submit" value="">
+                        @*@{Html.RenderAction("Search", "Home", "Client");}*@
                     </div>
                 </div>
                 <div class="clearfix"> </div>
@@ -113,6 +90,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--bottom-header-->
+    <!--banner-starts-->
+    <div class="bnr" id="home">
+        <div id="top" class="callbacks_container">
+            <ul class="rslides" id="slider4">
+                <li>
+                    <img src="images/bnr-1.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="images/bnr-2.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="images/bnr-3.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
     </div>

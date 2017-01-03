@@ -48,6 +48,17 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public void CreateUser(string username, string password, string phoneNumber)
+        {
+            User user = new User();
+            user.Username = username;
+            user.Password = password;
+            user.PhoneNumber = phoneNumber;
+            user.UserGroupId = "CUSTOMER";
+            db.Users.Add(user);
+            db.SaveChanges();
+        }
+
         public IEnumerable<User> GetAll(int page, int pageSize)
         {
             return db.Users.OrderBy(u => u.UserGroupId).ToPagedList(page, pageSize);

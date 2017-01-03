@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Areas/Client/Views/Shared/_ClientLayout.cshtml";
+}
+
+<h2>Vượt quá số lượng trong kho.</h2>
+
+<button type="button" class="btn btn-outline btn-primary" id="button-continue-shopping">Tiếp tục mua hàng</button>
+
+<script>
+    $(document).ready(function () {
+        $('#button-continue-shopping').on('click', function () {
+            window.location.href = "/Client/Products/Index";
+        });
+    });
+</script>
+

@@ -1,6 +1,5 @@
-﻿@model Models.EF.Role
-@using PagedList.Mvc;
-@using Models.EF;
+﻿@using Models.EF;
+@model Role
 
 @{
     ViewBag.Title = "GrantPermission";
@@ -57,16 +56,13 @@
                                                 @Html.DisplayFor(modelItem => item.Name)
                                             </td>
                                             <td>
-                                                <a href="#" class="delete-item" data-target="#confirmation-dialog" data-toggle="modal" data-id="@item.Id">Xóa</a>
+                                                <a href="#" class="delete-item" data-target="#confirmation-dialog-1" data-toggle="modal" data-id="@item.Id" data-bind="@Model.Id">Xóa</a>
                                             </td>
                                         </tr>
                                         groupIndex++;
                                     }
                                 </table>
                             </div>
-                            @*<div style="text-align:center">
-                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -108,16 +104,13 @@
                                                 @Html.DisplayFor(modelItem => item.Name)
                                             </td>
                                             <td>
-                                                <a href="#" class="delete-item" data-target="#confirmation-dialog" data-toggle="modal" data-id="@item.Username">Xóa</a>
+                                                <a href="#" class="delete-item" data-target="#confirmation-dialog-2" data-toggle="modal" data-id="@item.Username" data-bind="@Model.Id">Xóa</a>
                                             </td>
                                         </tr>
                                         userIndex++;
                                     }
                                 </table>
                             </div>
-                            @*<div style="text-align:center">
-                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -127,3 +120,52 @@
     </div>
 </div>
 
+<div class="modal fade" id="confirmation-dialog-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa?</p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmation-dialog-button-ok-1" value="/Admin/Roles/DeleteGroupPermission/">Xóa</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmation-dialog-2" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa?</p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmation-dialog-button-ok-2" value="/Admin/Roles/DeletePersonPermission/">Xóa</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var itemToDelete = "";
+    var roleId = "";
+
+    $(document).ready(function () {
+        $('.delete-item').on('click', function () {
+            itemToDelete = $(this).attr('data-id');
+            roleId = $(this).attr('data-bind');
+        });
+
+        $('#confirmation-dialog-button-ok-1').on('click', function () {
+            var link = $(this).val();
+            window.location.href = link + "?roleId=" + roleId + "&groupId=" + itemToDelete;
+        });
+
+        $('#confirmation-dialog-button-ok-2').on('click', function () {
+            var link = $(this).val();
+            window.location.href = link + "?roleId=" + roleId + "&username=" + itemToDelete;
+        });
+    });
+</script>

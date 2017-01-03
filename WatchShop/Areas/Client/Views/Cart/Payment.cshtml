@@ -1,0 +1,113 @@
+﻿@model IEnumerable<WatchShop.Areas.Client.Models.CartItem>
+@using Models.DAO;
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Areas/Client/Views/Shared/_ClientLayout.cshtml";
+}
+
+@section Header{
+    <link href="~/Assets/Client/css/bootstrap.css" rel="stylesheet" />
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>Ảnh sản phẩm</th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Tổng giá
+        </th>
+        <th></th>
+    </tr>
+    @{int count = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @item.Product.Name
+            </td>
+            <td>
+                <img src="@(WatchShop.Common.Constants.IMAGE_PATH + item.Product.Image)" width="100" />
+            </td>
+            <td>
+                <input type="text" class="quantity" data-id="@item.Product.Id" data-bind="@item.Product.Price" value="@item.Quantity" />
+            </td>
+            <td>
+                @item.Product.Price.GetValueOrDefault(0)
+            </td>
+            <td>
+                <p id="@(item.Product.Id+"-total-cost")">@(item.Product.Price.GetValueOrDefault(0) * item.Quantity)</p>
+            </td>
+            <td>
+                <a href="@Url.Action("RemoveItem", "Cart", new { productId = item.Product.Id })"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        count++;
+    }
+</table>
+
+<div class="col-sm-6">
+    <h2>Thông tin khách hàng</h2>
+    @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label>Người nhận</label>
+            <input name="recipient" id="text-recipient" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Địa chỉ</label>
+            <input name="address" id="text-address" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input name="phone" id="text-phone" class="form-control" />
+        </div>
+
+        <input type="button" id="button-send-bill" value="Gửi đơn hàng" />
+    }
+</div>
+
+@Html.Partial("WarningDialog", new ViewDataDictionary { { "message", "Bạn chưa điền đủ thông tin." } })
+
+<script>
+    $(document).ready(function () {
+        $('#button-send-bill').on('click', function () {
+            var recipient = $('#text-recipient').val() == undefined ? "" : $('#text-recipient').val();
+            var address = $('#text-address').val() == undefined ? "" : $('#text-address').val();
+            var phone = $('#text-phone').val() == undefined ? "" : $('#text-phone').val();
+            if (recipient.trim().length > 0 && address.trim().length > 0 && phone.trim().length > 0) {
+                $.ajax({
+                    url: '/Client/Cart/OrderProducts',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        recipient: recipient,
+                        address: address,
+                        phone: phone
+                    },
+                    success: function (response) {
+                        window.location.href = "/Client/Products/Index";
+                    }
+                });
+            } else {
+                $('#warning-dialog').modal('show');
+            }
+        });
+    });
+</script>

@@ -1,7 +1,5 @@
 ﻿using Models.EF;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace WatchShop.Areas.Client.Models
 {

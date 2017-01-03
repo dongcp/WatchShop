@@ -6,12 +6,6 @@
     Layout = "~/Areas/Client/Views/Shared/_ClientLayout.cshtml";
 }
 
-@section Header{
-    <link href="~/Assets/Admin/dist/css/sb-admin-2.css" rel="stylesheet" />
-    <script src="~/Assets/Admin/dist/js/sb-admin-2.js"></script>
-    <script src="~/Assets/Client/js/cart.controller.js"></script>
-}
-
 <table class="table table-striped table-bordered table-hover">
     <tr>
         <th>
@@ -46,7 +40,7 @@
                 <img src="@(WatchShop.Common.Constants.IMAGE_PATH + item.Product.Image)" width="100" />
             </td>
             <td>
-                <input type="text" class="quantity" data-id="@item.Product.Id" data-bind="@item.Product.Price" value="@item.Quantity" />
+                <input type="text" class="quantity" id="@("text-quantity-"+count)" data-id="@item.Product.Id" data-bind="@item.Product.Price" value="@item.Quantity" />
             </td>
             <td>
                 @item.Product.Price.GetValueOrDefault(0)
@@ -62,7 +56,107 @@
     }
 </table>
 
-<button type="button" class="btn btn-outline btn-primary" id="button-continue-shopping">Tiếp tục mua hàng</button>
-<button type="button" class="btn btn-outline btn-primary" id="button-update-cart">Cập nhật</button>
-<button type="button" class="btn btn-outline btn-primary" id="button-delete-cart">Xóa giỏ hàng</button>
+<button type="button" id="button-continue-shopping">Tiếp tục mua hàng</button>
+<button type="button" id="button-update-cart">Cập nhật</button>
+<button type="button" id="button-delete-all">Xóa giỏ hàng</button>
+<button type="button" id="button-buy">Đặt hàng</button>
 
+<script>
+    $(document).ready(function () {
+        var oldQuantity;
+        var currentId;
+
+        // Update total cost when user change quantity
+        $('.quantity').on('mousedown', function () {
+            oldQuantity = $(this).val();
+        });
+
+        $('.quantity').on('input', function () {
+            var quantity = $(this).val();
+            if (quantity != null && quantity != "") {
+                var totalCostId = "#" + $(this).data('id') + "-total-cost";
+                var totalCost = $(this).data('bind') * quantity;
+                $(totalCostId).text(totalCost);
+            }
+        });
+
+        $('.quantity').on('focusout', function () {
+            var quantity = $(this).val();
+            currentId = "#" + $(this).attr('id');
+            if (quantity == null || quantity == 0) {
+                $(this).val(oldQuantity);
+            } else {
+                $.ajax({
+                    url: '/Client/Cart/CheckQuantity',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        productId: $(this).data('id'),
+                        quantity: $(this).val()
+                    },
+                    success: function (response) {
+                        // Quantity exceeds the available product
+                        if (response.status == false) {
+                            $(currentId).val(oldQuantity);
+                            var totalCostId = "#" + $(currentId).data('id') + "-total-cost";
+                            var totalCost = $(currentId).data('bind') * oldQuantity;
+                            $(totalCostId).text(totalCost);
+                            alert("Vượt quá số lượng trong kho.");
+                        }
+                    }
+                });
+            }
+        });
+
+        // Update cart
+        $('#button-update-cart').off('click').on('click', function () {
+            var products = $('.quantity');
+            var cart = [];
+            $.each(products, function (i, item) {
+                cart.push({
+                    Quantity: $(item).val(),
+                    Product: {
+                        Id: $(item).data('id')
+                    }
+                });
+            });
+
+            $.ajax({
+                url: '/Client/Cart/Update',
+                data: {
+                    cartModel: JSON.stringify(cart)
+                },
+                dataType: 'json',
+                type: 'POST',
+                success: function (response) {
+                    if (response.status == true) {
+                        window.location.href = "/Client/Cart/Index";
+                    }
+                }
+            });
+        });
+
+        // Buy
+        $('#button-buy').off('click').on('click', function () {
+            window.location.href = "/Client/Cart/Payment";
+        });
+
+        // Delete cart
+        $('#button-delete-all').off('click').on('click', function () {
+            $.ajax({
+                url: '/Client/Cart/DeleteAll',
+                type: 'GET',
+                success: function (response) {
+                    if (response == "True")
+                        window.location.href = "/Client/Cart/Index";
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('#button-continue-shopping').on('click', function () {
+                window.location.href = "/Client/Products/Index";
+            });
+        });
+    });
+</script>

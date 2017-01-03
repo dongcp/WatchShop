@@ -8,7 +8,6 @@
 }
 
 @section Header{
-    <link href="~/Assets/Client/css/home.css" rel="stylesheet" />
     <script src="~/Assets/Client/js/jquery-1.11.0.min.js"></script>
 }
 
@@ -17,13 +16,13 @@
     <div id="top" class="callbacks_container">
         <ul class="rslides" id="slider4">
             <li>
-                <img src="~/Assets/Client/images/bnr-1.jpg" alt="" />
+                <img src="~/Assets/Client/images/bnr-1.jpg" />
             </li>
             <li>
-                <img src="~/Assets/Client/images/bnr-2.jpg" alt="" />
+                <img src="~/Assets/Client/images/bnr-2.jpg" />
             </li>
             <li>
-                <img src="~/Assets/Client/images/bnr-3.jpg" alt="" />
+                <img src="~/Assets/Client/images/bnr-3.jpg" />
             </li>
         </ul>
     </div>
@@ -103,36 +102,36 @@
                 {
                     <div class="product-one">
                         @{
-                    int j = products.Count - 4 * (numberOfRows - i);
-                    if (j < 0)
-                    {
-                        j = 0;
-                    }
-                    int limit = 4 * (i + 1);
-                    if (limit > products.Count)
-                    {
-                        limit = products.Count;
-                    }
-                    for (; j < limit; j++)
-                    {
-                        Product product = products[j];
-                        string imagePath = WatchShop.Common.Constants.IMAGE_PATH + product.Image;
-                        <div class="col-md-3 product-left">
-                            <div class="product-main simpleCart_shelfItem">
-                                <a href="@Url.Action("Detail", "Product", "Customer")" class="mask"><img class="img-responsive zoom-img" src="@imagePath" style="height:250px" /></a>
-                                <div class="product-bottom">
-                                    <h3>@product.Name</h3>
-                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@product.Price VNĐ</span></h4>
+                            int j = products.Count - 4 * (numberOfRows - i);
+                            if (j < 0)
+                            {
+                                j = 0;
+                            }
+                            int limit = 4 * (i + 1);
+                            if (limit > products.Count)
+                            {
+                                limit = products.Count;
+                            }
+                            for (; j < limit; j++)
+                            {
+                                Product product = products[j];
+                                string imagePath = WatchShop.Common.Constants.IMAGE_PATH + product.Image;
+                                <div class="col-md-3 product-left">
+                                    <div class="product-main simpleCart_shelfItem">
+                                        <a href="@Url.Action("Detail", "Products", new { area="Client",id=product.Id})" class="mask"><img class="img-responsive zoom-img" src="@imagePath" style="height:250px" /></a>
+                                        <div class="product-bottom">
+                                            <h3>@product.Name</h3>
+                                            <h4><a class="item_add" href="@Url.Action("AddItem", "Cart", new { productId = product.Id, quantity = 1 })"><i></i></a> <span class=" item_price">@product.Price VNĐ</span></h4>
+                                        </div>
+                                        <div class="srch">
+                                            <span>-@product.Discount%</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="srch">
-                                    <span>-@product.Discount%</span>
-                                </div>
-                            </div>
-                        </div>
-                    }
+                            }
                         }
                     </div>
-                }
+                            }
             }
         </div>
     </div>

@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Models.EF;
 using Models.DAO;
@@ -12,6 +8,7 @@ using WatchShop.Areas.Admin.Models;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
+    [Authority]
     public class RolesController : Controller
     {
         public ActionResult Index(int page = 1, int pageSize = 10)
@@ -128,6 +125,18 @@ namespace WatchShop.Areas.Admin.Controllers
         {
             RoleDAO.Instance.GrantGroupPermission(groupId, roleId);
             return "success";
+        }
+
+        public ActionResult DeleteGroupPermission(string roleId, string groupId)
+        {
+            RoleDAO.Instance.DeleteGroupPermission(roleId, groupId);
+            return RedirectToAction("GrantPermission", new { id = roleId });
+        }
+
+        public ActionResult DeletePersonPermission(string roleId, string username)
+        {
+            RoleDAO.Instance.DeletePersonPermission(roleId, username);
+            return RedirectToAction("GrantPermission", new { id = roleId });
         }
     }
 }

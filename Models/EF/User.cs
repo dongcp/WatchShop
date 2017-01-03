@@ -25,8 +25,8 @@ namespace Models.EF
         public void Copy(User user)
         {
             Name = user.Name;
-            Birthday = user.Birthday;
             Address = user.Address;
+            Birthday = user.Birthday;
             PhoneNumber = user.PhoneNumber;
             UserGroupId = user.UserGroupId;
         }

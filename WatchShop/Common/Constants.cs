@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WatchShop.Common
+﻿namespace WatchShop.Common
 {
     public class Constants
     {
@@ -11,6 +6,7 @@ namespace WatchShop.Common
         public const string SESSION_FILTER_BRANCH = "branch";
         public const string SESSION_FILTER_DISCOUNT = "discount";
         public const string SESSION_FILTER_PRICE = "price";
+        public const string SESSION_FILTER_TYPE = "type";
         public const string SESSION_CART = "cart";
 
         public const string IMAGE_PATH = "/Assets/Common/Images/";

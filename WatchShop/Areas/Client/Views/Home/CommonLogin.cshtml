@@ -21,7 +21,7 @@
                 <p class="error"></p>
                 <input type="text" placeholder="tên tài khoản" id="create-username" />
                 <input type="password" placeholder="mật khẩu" id="create-password" />
-                <input type="text" placeholder="email" id="create-email" />
+                <input type="text" placeholder="Số điện thoại" id="create-phone-number" />
                 <input type="button" id="button-create" class="button" value="Tạo tài khoản" />
                 <p class="message">Đã có tài khoản? <a href="#">Đăng nhập</a></p>
             </form>
@@ -45,16 +45,32 @@
             $('#button-create').click(function(){
                 var username=$('#create-username').val();
                 var password=$('#create-password').val();
-                var email=$('#create-email').val();
+                var phoneNumber=$('#create-phone-number').val();
                 if (username == "") {
                     $('.error').text("Bạn chưa nhập tên tài khoản!").css("color", "red");
                     $('#create-username').focus();
                 } else if (password == "") {
                     $('.error').text("Bạn chưa nhập mật khẩu!").css("color", "red");
                     $('#create-password').focus();
-                } else if(email==""){
-                    $('.error').text("Bạn chưa nhập email!").css("color", "red");
-                    $('#create-email').focus();
+                } else if(phoneNumber==""){
+                    $('.error').text("Bạn chưa nhập số điện thoại!").css("color", "red");
+                    $('#create-phone-number').focus();
+                }else{
+                    $.ajax({
+                        url:'/Client/Home/CreateUser',
+                        type:'POST',
+                        dataType:'json',
+                        data:{
+                            username: username,
+                            password: password,
+                            phoneNumber: phoneNumber
+                        },
+                        success: function(response){
+                            if(response.status==true){
+                                alert("Đăng ký thành công!");
+                            }
+                        }
+                    });
                 }
             });
 

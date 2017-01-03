@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -10,9 +6,11 @@ using Models.EF;
 using Models.DAO;
 using System.IO;
 using WatchShop.Common;
+using WatchShop.Areas.Admin.Models;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
+    [Authority]
     public class ProductsController : Controller
     {
         public ActionResult Index(int page = 1, int pageSize = 10)

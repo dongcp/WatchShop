@@ -18,5 +18,10 @@ namespace WatchShop.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult NoPermission()
+        {
+            return View();
+        }
     }
 }
